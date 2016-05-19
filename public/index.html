@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" ng-app="myapp">
+  <head>
+    <meta charset="UTF-8">
+    <title>Recreation</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  </head>
+    <body ng-controller='control as ctrl'>
+      <h3>{{9+9}}</h3>
+      <div ng-show="ctrl.hide">
+        <p>hidden</p>
+      </div>
+    <div ng-include="'public/newpage.html'">
+    </div>
+    <button ng-click='ctrl.showControl()'>Search Data</button>
+    
+    <!--<script type="text/javascript" src="js/home_controller.js"></script>-->
+    <script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>
