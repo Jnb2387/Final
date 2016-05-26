@@ -7,9 +7,10 @@ router.route('/hikes')
     .get(hikeControl.all)
     .post(hikeControl.create)
 router.route('/hikes/:id')
-    .put(hikeControl.update)
+    .post(hikeControl.update)
     // .delete(hikeControl.delete)
     .get(hikeControl.showOne)
+router.route('/home')
 
 
 /////////////////// ---------bullshit stuff------------------------------//

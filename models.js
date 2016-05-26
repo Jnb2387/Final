@@ -1,5 +1,6 @@
+//------------------------bring in mongoose-----------------------------------------//
 var mongoose = require('mongoose')
-
+//--------Creating a Schema Model for trails to be stored in the database-----------//
 var trailSchema = mongoose.Schema({
     city: String,
     state: String,
@@ -16,4 +17,6 @@ var trailSchema = mongoose.Schema({
     rating: Number
 })
 
+
+//----------Exporting the schema with mongoose.modal to hikes.js for CRUD-------------//
 module.exports = mongoose.model("hike", trailSchema)

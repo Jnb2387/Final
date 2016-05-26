@@ -30,12 +30,14 @@ module.exports = {
   update: function(req,res){
     hikes.findOneAndUpdate({_id: req.params.id}, req.body,{new: true},
     function(err, hike){
-      if(err) {
-        res.json({message: "database error", error:err})
-      }
-      else {
-        res.json(hike)
-      }
+      if(err) console.log("err updating plate: ", err)
+              res.json(hike)
+      // if(err) {
+      //   res.json({message: "database error", error:err})
+      // }
+      // else {
+      //   res.send(hike)
+      // }
     })
   },
 //-------------showing one individual hike, find it by req.params.id---------------//
