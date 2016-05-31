@@ -1,30 +1,48 @@
-<!--<div>-->
-<!--  <div class="row">-->
-<!--    <form class="col s12" ng-submit="logCtrl.login()">-->
-<!--      <div class="row">-->
-<!--        <div class="input-field col s6">-->
-<!--          <i class="material-icons prefix">account_circle</i>-->
-<!--          <input id="icon_prefix" type="text" class="validate" ng-model="logCtrl.username">-->
-<!--          <label for="icon_prefix">Username</label>-->
-<!--        </div>-->
-<!--        <div class="input-field col s6">-->
-<!--          <i class="material-icons prefix">lock</i>-->
-<!--          <input id="user_pw" type="password" class="validate" ng-model="logCtrl.password">-->
-<!--          <label for="user_pw">Password</label>-->
-<!--        </div>-->
-<!--        <button class="btn waves-effect waves-light" type="submit" name="action">Submit-->
-<!--          <i class="material-icons right">send</i>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--    </form>-->
-<!--  </div>-->
-<!--</div>-->
-
+<!-----------------------------bootstrap log on form-->
 <form class="form-signin, container" ng-submit="logCtrl.login()">
   <h2 class="form-signin-heading">Please sign in</h2>
   <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="text" id="inputEmail" class="form-control" placeholder="Email address" ng-model="logCtrl.username">
+  <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="logCtrl.username">
   <label for="inputPassword" class="sr-only">Password</label>
   <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="logCtrl.password">
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form>
+
+<h1>Register</h1>
+<form class="form-signin, container" ng-submit="logCtrl.signup()">
+  <h2 class="form-signin-heading">Please create account</h2>
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="logCtrl.signup.username">
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="logCtrl.signup.password">
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+
+
+
+<!------------------------------------modal-->
+	<!--<button class="btn btn-success" style="display:inline-block;">Check My Water</button>-->
+	<!--				<div class="modal fade" id="modal-1">-->
+	<!--					<div class="modal-dialog">-->
+	<!--						<div class= "modal-content">-->
+	<!--							<div class="modal-header">-->
+	<!--								<button type="button" class="close" data-dismiss="modal"></button>-->
+	<!--									<h3 class="modal-title" style="text-align:center;">Results For {{myfirstCtrl.results.name}}</h3>-->
+	<!--							</div>-->
+	<!--							<div class="modal-body">-->
+	<!--								<div class="box">Rating:<br>{{myfirstCtrl.results.rating}}</div>-->
+	<!--								<div><span id="modalinfo">Violations Found:</span> <span style="color:red;">{{myfirstCtrl.results.violations}}</span></div>-->
+	<!--								<br>-->
+	<!--								<div><span id="modalinfo">Population Impacted:</span>{{myfirstCtrl.results.population}}</div>-->
+	<!--								<br>-->
+	<!--								<div><span id="modalinfo">{{myfirstCtrl.results.name}} Water Comes From:</span><br> {{myfirstCtrl.results.where}}</div>-->
+	<!--								<div><a href="https://www.google.com/maps/place/City+of+Flint+Water+Plant/@43.0725924,-83.8935118,11z/data=!4m5!1m2!2m1!1sflint+michigan+water+treatment+plant!3m1!1s0x0000000000000000:0x857d53a923a46f7e" target="_blank">-->
+	<!--									<img style="width:550px;" class="thumbnail" ng-src='{{myfirstCtrl.results.imageofmap}}'</a></div>-->
+	<!--								<div><a ng-href='{{myfirstCtrl.results.linktomore}}'target="_blank">Full Water Quality Report</a></div>-->
+	<!--							</div>-->
+	<!--							<div class="modal-footer">-->
+	<!--								<a href="" class="btn btn-primary" data-dismiss="modal">Close</a>-->
+	<!--							</div>-->
+	<!--						</div>-->
+	<!--					</div>-->
+	<!--				</div>-->

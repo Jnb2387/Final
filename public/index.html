@@ -100,15 +100,22 @@
 <html ng-app="hikeApp">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" type="text/css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" type="text/css" />
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 		<!--<link rel="stylesheet" db.hikeshref="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css" type="text/css" />-->
-		<link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+	  <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/firstview.css" type="text/css" />
+    <link rel="stylesheet" href="/css/home.css" type="text/css" />
+<!--material design    -->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+<!--<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">-->
+<!--<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>-->
+
     <title>Colorado Trails</title>
   </head>
   <body>
@@ -123,7 +130,7 @@
           <span class="icon-bar"></span>
           <div>
         </button>
-        <h1 style='color:white; font-family: "Sigmar One", cursive;'>COLORADO TRAILS</h1>
+        <h1 style="color:white;font-family: 'Rye', cursive;;"><span style="font-size:40px; margin:0;">C</span>olorado Trails</h1>
       </div>
       <div id="navbar6" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -131,7 +138,9 @@
           <li><a href="#/firstview">Trails</a></li>
           <li><a href="#">14ers</a></li>
           <li><a href="#/login">Login</a></li>
-          <li><a href="#/profile">My Hikes</a></li>
+          <li><a href="#/profile">Dashboard</a></li>
+          
+          
           <!--<li class="dropdown">-->
           <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
           <!--  <ul class="dropdown-menu" role="menu">-->
@@ -161,5 +170,6 @@
     <script type="text/javascript" src="/js/main.js"></script>
     <script type="text/javascript" src="homeController.js"></script>
     <script type="text/javascript" src="hikeFactory.js"></script>
+    <script type="text/javascript" src="pageRoute.js"></script>
   </body>
 </html>

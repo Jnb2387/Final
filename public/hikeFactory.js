@@ -1,27 +1,27 @@
 (function() {
   angular.module('hikeFactory', [])
-    .factory('discMob', discMob)
+    .factory('trailFact', trailFact)
 
-    function discMob ($http) {
-      var dMob = {}
+    function trailFact ($http) {
+      var trailFact = {}
 
-      dMob.create = function(hike){
-        console.log("from factory",hike)
+      trailFact.create = function(hike) {
+          console.log("from factory",hike)
           return $http.post('/api/hikes', hike)
       }
-      dMob.update = function(hike, id){
+      trailFact.update = function(hike, id){
           return $http.put('/api/hikes/'+id, hike)
       }
-      dMob.delete = function(id){
+      trailFact.delete = function(id){
           return $http.delete('/api/hikes/'+id)
       }
-      dMob.showAll = function(){
+      trailFact.showAll = function(){
           return $http.get('/api/hikes')
       }
-      dMob.showOne = function(id){
+      trailFact.showOne = function(id){
           return $http.get('/api/hikes/'+id)
       }
-      return dMob
+      return trailFact
     }
 
 

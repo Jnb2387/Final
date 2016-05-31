@@ -9,68 +9,40 @@ var express = require('express'),
     jwt = require('jsonwebtoken'),
     bcrypt = require('bcryptjs'),
     mySpecialSecret = "boom",
-    
+    User = require("./models").User,
 //--------------- express object to use app.----------------------------------//  
     app = express();
-    
-//------------Connecting Mongoose and Naming the Database(hikingdb)-----------//
+
+//-------Connecting Mongoose and Naming the Database(hikingdb & users)--------//
 mongoose.connect('mongodb://localhost/hikingdb', function(err) {
     if (err) console.log("Error in mongod")
 })
-mongoose.connect('mongodb://localhost/users', function(err){
-    if (err) console.log('Error in users db')
-})
-
+mongoose.connect('mongodb://localhost/users', function(err) {
+        if (err) console.log('Error in users db')
+    })
 // ------------------------------Middleware-----------------------------------//
 app.use(logger('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 app.use(express.static(path.join(__dirname, './public')))
 //--------------------connecting to routing page------------------------------//
 app.use('/api', apiRoutes)
 
-// ------------------User Model and Schema--------------------------------------
-var userSchema = mongoose.Schema({
-    username: {
-        type: String,
-        unique: true
-    },
-    password: String
-})
-
-// //--------------- Model middleware that runs before user is saved to db-----------
-userSchema.pre('save', function(next) {
-    var user = this
-    var hashPassword = bcrypt.hashSync(user.password, 8)
-    user.password = hashPassword
-    console.log('Encrypting PW-------------------')
-    next()
-})
-
-// // Add a method to the userSchema to validate a pw
-userSchema.methods.authenticate = function(userPassword) {
-    var user = this
-    return bcrypt.compareSync(userPassword, user.password)
-}
-
-var User = mongoose.model('User', userSchema)
-
-// // create my signup and login routes
+//-----------------------create signup and login routes-------------------------//
 app.post('/signup', function(req, res) {
     var user = new User(req.body)
     console.log('Before save-------------------')
     user.save(function(err, user) {
         if (err) {
             res.json(err)
-        }
-        else {
+        } else {
             console.log('After save-------------------')
-
             res.json(user)
         }
     })
 })
-
 
 app.post('/login', function(req, res) {
     User.findOne({
@@ -78,27 +50,23 @@ app.post('/login', function(req, res) {
     }, function(err, user) {
         if (err) {
             res.json(err)
-        }
-        else if (user) {
+        } else if (user) {
             if (user.authenticate(req.body.password)) {
-
                 var token = jwt.sign({
                         name: user.username
                     }, mySpecialSecret, {
-                        expiresIn: 1440
+                        expiresIn: 60
                     })
-                    // 4 - Send back a success message with the JWT
+ //---------- Send back a success message with the JWT
                 res.json({
                     success: true,
-                    message: 'YOU get a token! YOU get a token! YOU get a token!',
+                    message: 'Log in Successful',
                     token: token
-
                 })
-
             }
             else {
                 res.json({
-                    message: "your password does not match!",
+                    message: "Password does not match.",
                     success: false
                 })
             }
@@ -109,6 +77,15 @@ app.post('/login', function(req, res) {
                 success: false
             })
         }
+    })
+})
+
+
+//-----------------testing to show users delete------------------//
+app.get('/users', function(req, res) {
+    User.find({}, function(err, users) {
+        console.log(users)
+        res.json(users);
     })
 })
 
@@ -125,7 +102,7 @@ function authorize(req, res, next) {
                         success: false,
                         message: "can't authenticate token"
                     })
-                    //      - if it CAN be decoded, save the decoded token to the request, and we'll keep processing the request
+ //----- if it CAN be decoded, save the decoded token to the request, and we'll keep processing the request------//
             }
             else {
                 req.decoded = decoded;
@@ -134,29 +111,13 @@ function authorize(req, res, next) {
         })
     }
     else {
-
-        // 3 - If we can't find a token at all, we'll just send back an error message
+//----------- If we can't find a token at all, we'll just send back an error message---------------------//
         return res.status(403).send({
             success: false,
             message: "no token provided"
         })
     }
-
 }
-
-//------------------------------Trail api Request------------------------------//    
-// unirest.get("https://trailapi-trailapi.p.mashape.com/?limit=2&q[city_cont]=boulder&q[state_cont]=colorado")
-// .header("X-Mashape-Key", "8mlC8jrjDAmshlnwizaoY3CzX0mQp1Rav7OjsnZ8xsATTO67da")
-// .header("Accept", "json")
-// .end(function (result) {
-//     var results = {}
-
-//     results = result.raw_body
-    
-//     var trailName = results
-    
-//   console.log(trailName);
-// });
 
 //------------------------------Creating Server-------------------------------//
 var port = process.env.PORT;
@@ -164,3 +125,21 @@ var port = process.env.PORT;
 app.listen(port, function() {
     console.log('server is listening on ' + port);
 })
+
+
+
+
+
+
+
+
+//---------------------------Trail api Request---------------------------------//    
+// unirest.get("https://trailapi-trailapi.p.mashape.com/?limit=2&q[city_cont]=boulder&q[state_cont]=colorado")
+// .header("X-Mashape-Key", "8mlC8jrjDAmshlnwizaoY3CzX0mQp1Rav7OjsnZ8xsATTO67da")
+// .header("Accept", "json")
+// .end(function (result) {
+//     var results = {}
+//     results = result.raw_body
+//     var trailName = results
+//   console.log(trailName);
+// });

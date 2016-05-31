@@ -1,43 +1,42 @@
 <div class="container">
-<!------------------------------Unsure---------------------------------->
+  <!------------------------------Unsure---------------------------------->
   <div>
-    <h1 ng-if= "hCtrl.page == 'create'"> Create Hike
+    <h1 ng-if="hCtrl.page == 'create'"> Create Hike
     </h1>
-    <h1 ng-if= "hCtrl.page == 'edit'"> Edit Hike
+    <h1 ng-if="hCtrl.page == 'edit'"> Edit Hike
     </h1>
   </div>
-<!------------------------------Inputs for A New Hike---------------------------------->
+  <!------------------------------Inputs for A New Hike---------------------------------->
   <form>
-    City:<input type="text" name="city" ng-model="hCtrl.newHike.city">
-    <br>
-    State:<input type="text" name="state" ng-model="hCtrl.newHike.state">
-    <br>
-    Name:<input type="text" name="name" ng-model="hCtrl.newHike.name">
-    <br>
-    Directions:<input type="text" name="directions" ng-model="hCtrl.newHike.directions">
-    <br>
-    Lat:<input type="number" name="lat" ng-model="hCtrl.newHike.lat"> 
-    <br>
-    Lon:<input type="number" name="long" ng-model="hCtrl.newHike.lon"> 
-    <br>
-    Activity Type:<input type="text" name="activity_type_name" ng-model="hCtrl.newHike.activity_type_name">
-    <br>
-    Link:<input type="text" name="url" ng-model="hCtrl.newHike.url">
-    <br>
-    Length:<input type="number" name="length" ng-model="hCtrl.newHike.length">
-    <br>
-    Description:<input type="string" name="description" ng-model="hCtrl.newHike.description">
-    <br>
-    thumbnail:<input type="text" name="thumbnail" ng-model="hCtrl.newHike.thumbnail">
-    <br>
-    Rating:<input type="text" name="rating" ng-model="hCtrl.newHike.rating">
-  <!------------------------------End of Inputs---------------------------------->  
-    
-    
-    
-  <!------------------------------Add and Edit buttons---------------------------------->  
-    <button type="button" ng-if= "hCtrl.page == 'create'" ng-click="hCtrl.submitHike(hCtrl.newHike)">Submit Hike</button>
-    <button type="button" ng-if= "hCtrl.page == 'edit'" ng-click="hCtrl.updateHike(hCtrl.newHike)">Submit Edit</button>
-  
+    City:
+    <input type="text" name="city" ng-model="hCtrl.newHike.city">
+    <br> Name:
+    <input type="text" name="name" ng-model="hCtrl.newHike.name">
+    <br> Directions:
+    <input type="text" name="directions" ng-model="hCtrl.newHike.directions">
+    <br> Lat:
+    <input type="number" name="lat" ng-model="hCtrl.newHike.lat">
+    <br> Lon:
+    <input type="number" name="long" ng-model="hCtrl.newHike.lon">
+    <br> Activity Type:
+    <input type="text" name="activity_type_name" ng-model="hCtrl.newHike.activity_type_name">
+    <br> Link:
+    <input type="text" name="url" ng-model="hCtrl.newHike.url">
+    <br> Length:
+    <input type="number" name="length" ng-model="hCtrl.newHike.length">
+    <br> Description:
+    <input type="string" name="description" ng-model="hCtrl.newHike.description">
+    <br> thumbnail:
+    <input type="text" name="thumbnail" ng-model="hCtrl.newHike.thumbnail">
+    <br> Rating:
+    <input type="text" name="rating" ng-model="hCtrl.newHike.rating">
+    <!------------------------------End of Inputs---------------------------------->
+
+
+
+    <!------------------------------Add and Edit buttons---------------------------------->
+    <button type="button" ng-if="hCtrl.page == 'create'" ng-click="hCtrl.submitHike(hCtrl.newHike)">Submit Hike</button>
+    <button type="button" ng-if="hCtrl.page == 'edit'" ng-click="hCtrl.updateHike(hCtrl.newHike)">Submit Edit</button>
+
   </form>
 </div>
