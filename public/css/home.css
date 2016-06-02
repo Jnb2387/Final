@@ -1,8 +1,8 @@
-body{
-    background-image: url('https://images.alphacoders.com/217/217413.png');
-    background-position: center top;
-    background-repeat: no-repeat;
-}
+/*body{*/
+/*    background-image: url('https://images.alphacoders.com/217/217413.png');*/
+/*    background-position: center top;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
 
 .nav{
     font-size:20px;
@@ -21,4 +21,7 @@ h2 {
 }
 title {
   text-align: center;
+}
+#treatmentWrapperimg{
+    background-color:black;
 }

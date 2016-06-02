@@ -2,7 +2,7 @@
   angular.module('homeController', [])
     .controller('homeCtrl', homeCtrl)
     //------------------------ homeCtrl CONTROLLER for trails---------------------------//
-  function homeCtrl(trailFact, $state, $stateParams) {
+  function homeCtrl(trailFact, $state, $stateParams, userFactory) {
     var hCtrl = this
     hCtrl.working = "controller working"
     hCtrl.page = $state.current.name
@@ -44,10 +44,13 @@
       })
       console.log('didnt work', res)
     }
-    // =======add favorite trail to profile===================================
-   hCtrl.favorite = function() {
-     console.log('something')
+    hCtrl.getFavorites =function(){
+        usersFactory.get
     }
+    // =======add favorite trail to profile===================================
+  // hCtrl.favorite = function() {
+  //   console.log('something')
+  //   }
     // ============================
   }
 }());

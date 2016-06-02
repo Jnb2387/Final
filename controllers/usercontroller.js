@@ -77,11 +77,11 @@ module.exports = {
         addFavorites: function(req, res){
             var userId = req.body.userId;
             var trailsId = req.body.trailsId
-            var trailsIdnew =req.body.trailsId
-            // console.log('req.body',trailsIdnew)
-            User.findOne(userId, function(err, user, trailsIdnew){
+            // var trailsIdnew =req.body.trailsId
+            console.log('req.body',req.body)
+            User.findById(userId, function(err, user){
                 // console.log('user', user)
-                // console.log('trails', trailsId)
+                // console.log('trails', trailsIdnew)
                 if(err) res.json(err);
                 user.favorites.push(trailsId)
                 user.save(function(err, response){
@@ -90,6 +90,13 @@ module.exports = {
                     res.json(response)
                 })
             })
-        }
+        },
+    //   showFavorites: function(req, res){
+    //         var userId= req.body.userId;
+    //         user.findById(userId, function(err, user){
+    //             if (err) res.json(err);
+    //             res.json(user.favorites);
+    //         });
+    //     }
     }
 }

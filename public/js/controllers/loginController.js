@@ -5,13 +5,25 @@
    //------------------------ LOGIN CONTROLLER for user and dashboard---------------------------//
   function loginCtrl($http, $state, $window, $rootScope, $location, userFactory, Auth, AuthToken) {
    var logCtrl = this
+   logCtrl.userData = {}
    logCtrl.newuserData = {}
    logCtrl.page = 'Login'
-   $http.get('/api/hikes')
-    .then(function(response) {
-     //----------display trails on user dashboard??----------------------//
-     logCtrl.userTrails = response.data[0].city
-      // console.log(response.data)
+    // $http.get('/api/hikes')
+    //  .then(function(response) {
+    //   //----------display trails on user dashboard??----------------------//
+    //   logCtrl.userTrails = response.data[0].city
+    // console.log(response.data)
+    // })
+   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+    logCtrl.loggedIn = Auth.isLoggedIn();
+   });
+   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+
+     Auth.getUser()
+      .then(function(response) {
+       logCtrl.user = response.data
+       console.log(logCtrl.user)
+      });
     })
     //------------create login method to send user info to server----------//
    logCtrl.login = function() {
@@ -44,13 +56,14 @@
     }
     //----------------------------------Logout removes Token------------------------------//
    logCtrl.logout = function() {
-     $window.localStorage.removeItem('token')
-     $state.go('login')
-     console.log('Logged Out')
-    }
+    $window.localStorage.removeItem('token')
+    $state.go('login')
+    console.log('Logged Out')
+   }
    logCtrl.showNewUser = false
    logCtrl.addUser = function() {
     logCtrl.showNewUser = logCtrl.showNewUser ? false : true;
    }
+
   }
  }());
