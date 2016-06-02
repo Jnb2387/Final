@@ -17,16 +17,14 @@
                 <span class="listHeading">Lat:</span> {{ hike.lat }}
                 <br>
                 <span class="listHeading">Lon:</span> {{ hike.lon }}
-                
-
-                <!-------------form to add hike to completed for dashboard-------------------------->
                 <br>
-
                 <span class="listHeading">Activity:</span> {{ hike.activity_type_name }}
                 <br>
-                <button type="button" class="btn btn-danger btn-lg" name="completed" style='float:right;' ng-click='logCtrl.favorite()'>
+                <!-------------form to add hike to completed for dashboard-------------------------->
+                <button type="button" class="btn btn-danger btn-lg" name="completed" style='float:right;' ng-click='logCtrl.favorite(hike)'>
                   <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Add to Favorites
                 </button>
+                
                 <br>
                 <span class="listHeading">Description:</span> {{ hike.description }}
                 <br>

@@ -1,5 +1,5 @@
 (function() {
-angular.module('hikeApp')
+angular.module('hikeApp', ['homeController','loginController', "hikeFactory", 'ui.router','authenticationService','userFactory'])
     .config(routerConfig)
 
   function routerConfig($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -10,42 +10,46 @@ angular.module('hikeApp')
       .state('home', {
         url: '/',
         templateUrl: 'partials/home.html',
-        controller: 'homeCtrl as hCtrl'
+        controller: 'homeCtrl as hCtrl',
+        authenticate: false
       })
       .state('create', {
         url: '/create',
         templateUrl: 'partials/hikeform.html',
-        controller: 'homeCtrl as hCtrl'
+        controller: 'homeCtrl as hCtrl',
+        authenticate: true
       })
       .state('edit', {
         url: '/edit/:id',
         templateUrl: 'partials/hikeform.html',
-        controller: 'homeCtrl as hCtrl'
+        controller: 'homeCtrl as hCtrl',
+        authenticate: true
       })
       .state('firstview', {
         url: '/firstview',
         templateUrl: './partials/firstview.html',
-        controller: 'homeCtrl as hCtrl'
+        controller: 'homeCtrl as hCtrl',
+        authenticate: false
       })
     $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'partials/login.html',
-        controller: 'loginController as logCtrl',
+        controller: 'loginCtrl as logCtrl',
         authenticate: false
       })
       .state('profile', {
         url: '/profile',
         templateUrl: 'partials/profile.html',
-        controller: 'loginController as logCtrl',
-        authenticate: true
+        controller: 'loginCtrl as logCtrl',
+        authenticate: false
       })
 // -----------------need to add---------------------------------
-      .state('signup', {
-        url: '/signup',
-        templateUrl: 'partials/signup.html',
-        controller: 'loginController as logCtrl'
-      })
+      // .state('signup', {
+      //   url: '/signup',
+      //   templateUrl: 'partials/signup.html',
+      //   controller: 'loginController as logCtrl'
+      // })
       // ------------------send client to homepage------------------- //           
     $urlRouterProvider.otherwise('/')
   }

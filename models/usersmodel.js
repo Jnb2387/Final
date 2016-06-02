@@ -1,4 +1,3 @@
-//------------------------bring in mongoose---------------------------------//
 var mongoose = require('mongoose')
 
 // ------------------------user schema ------------------------------------//
@@ -15,7 +14,7 @@ var userSchema = mongoose.Schema({
         password: String,
         favorites: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'hike'
+            ref: 'Hike'
         }]
     })
 //--------- Model middleware that runs before user is saved to db---------//
@@ -39,31 +38,4 @@ userSchema.methods.addhike = function(hike) {
     user.save()
     return user
 }
-
-// -----------------------end of user schema ---------------------------//
-
-//-----Creating a Schema Model for trails to be stored in the database------//
-var trailSchema = mongoose.Schema({
-    city: String,
-    state: String,
-    country: String,
-    name: String,
-    directions: String,
-    lat: Number,
-    lon: Number,
-    activity_type_name: String,
-    url: String,
-    length: Number,
-    description: String,
-    thumbnail: String,
-    rating: Number
-})
-
-//-------- exporting both to hikes.js and from hikes.js to routes.js and then to server.js
-module.exports = {
-    hike: mongoose.model("hike", trailSchema),
-    User: mongoose.model('User', userSchema)
-}
-                // not using when exporting both user and hike schema
-//----------Exporting the schema with mongoose.modal to hikes.js for CRUD-------------//
-// module.exports = mongoose.model("hike", trailSchema)
+module.exports = mongoose.model("User", userSchema)

@@ -1,25 +1,21 @@
 <!-------------------------profile card------------------------------------------>
-<h2 class="display-1">Completed Trails</h2>
-<!--<h4 class="title">Demo Card with everything</h4>-->
+
+<h2 class="display-1">Favorite Trails</h2>
+<h4 class="title">Demo Card with everything</h4>
 <div class="demo-card">
     <div class="card">
-        <!--<div class="card-header">-->
-        <!--    Completed Trails-->
-        <!--</div>-->
-        <!--<img class="card-img-top" src="https://www.nsmba.ca/sites/default/files/images/misc/cbc-bridges.jpg">-->
-        <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{ logCtrl.userTrails }}</li>
-                <!--<li class="list-group-item">Dapibus ac facilisis in</li>-->
-                <!--<li class="list-group-item">Vestibulum at eros</li>-->
-            </ul>
+        <div class="card-header">
+            Completed Trails
         </div>
+        <img class="card-img-top" src="https://www.nsmba.ca/sites/default/files/images/misc/cbc-bridges.jpg">
         <div class="card-block">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <h4 class="card-title">{{ logCtrl.userTrails }}</h4>
+    
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"></li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
         </div>
         <div class="card-block">
             <a href="#" class="btn btn-primary">Button</a>
@@ -29,10 +25,11 @@
         </div>
     </div>
 </div>
-<div ng-show='logCtrl.isUserLoggedIn'>
-<button ng-click='logCtrl.logout()'>logout</button>
-<h1>Put something in for the profile page</h1>
+            <form ng-submit='logCtrl.weather()'>
+                <button type="submit" name="button">search weather</button>
+            </form>
+            <form ng-submit='logCtrl.getweather()'>
+                <button type="submit" name="button">search for weather</button>
+            </form>
 
-<h1>showing</h1>
-{{4+5}}
-</div>
+<button ng-click='logCtrl.logout()'>logout</button>

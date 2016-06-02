@@ -1,48 +1,52 @@
 <!-----------------------------bootstrap log on form-->
-<form class="form-signin, container" ng-submit="logCtrl.login()">
-  <h2 class="form-signin-heading">Please sign in</h2>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="logCtrl.username">
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="logCtrl.password">
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
+<!--<form class="form-signin, container" ng-submit="logCtrl.login()">-->
+<!--  <h2 class="form-signin-heading">Please sign in</h2>-->
+<!--  <label for="inputEmail" class="sr-only">Email address</label>-->
+<!--  <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="logCtrl.username">-->
+<!--  <label for="inputPassword" class="sr-only">Password</label>-->
+<!--  <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="logCtrl.password">-->
+<!--  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+<!--</form>-->
 
-<h1>Register</h1>
-<form class="form-signin, container" ng-submit="logCtrl.signup()">
-  <h2 class="form-signin-heading">Please create account</h2>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="logCtrl.signup.username">
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="logCtrl.signup.password">
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
+<!--<h1>Register</h1>-->
+<!--<form class="form-signin, container" ng-submit="logCtrl.signup()">-->
+<!--  <h2 class="form-signin-heading">Please create account</h2>-->
+<!--  <label for="inputEmail" class="sr-only">Email address</label>-->
+<!--  <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="logCtrl.newuserData.username">-->
+<!--  <label for="inputPassword" class="sr-only">Password</label>-->
+<!--  <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="logCtrl.newuserData.password">-->
+<!--  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>-->
+<!--</form>-->
 
-
-
-<!------------------------------------modal-->
-	<!--<button class="btn btn-success" style="display:inline-block;">Check My Water</button>-->
-	<!--				<div class="modal fade" id="modal-1">-->
-	<!--					<div class="modal-dialog">-->
-	<!--						<div class= "modal-content">-->
-	<!--							<div class="modal-header">-->
-	<!--								<button type="button" class="close" data-dismiss="modal"></button>-->
-	<!--									<h3 class="modal-title" style="text-align:center;">Results For {{myfirstCtrl.results.name}}</h3>-->
-	<!--							</div>-->
-	<!--							<div class="modal-body">-->
-	<!--								<div class="box">Rating:<br>{{myfirstCtrl.results.rating}}</div>-->
-	<!--								<div><span id="modalinfo">Violations Found:</span> <span style="color:red;">{{myfirstCtrl.results.violations}}</span></div>-->
-	<!--								<br>-->
-	<!--								<div><span id="modalinfo">Population Impacted:</span>{{myfirstCtrl.results.population}}</div>-->
-	<!--								<br>-->
-	<!--								<div><span id="modalinfo">{{myfirstCtrl.results.name}} Water Comes From:</span><br> {{myfirstCtrl.results.where}}</div>-->
-	<!--								<div><a href="https://www.google.com/maps/place/City+of+Flint+Water+Plant/@43.0725924,-83.8935118,11z/data=!4m5!1m2!2m1!1sflint+michigan+water+treatment+plant!3m1!1s0x0000000000000000:0x857d53a923a46f7e" target="_blank">-->
-	<!--									<img style="width:550px;" class="thumbnail" ng-src='{{myfirstCtrl.results.imageofmap}}'</a></div>-->
-	<!--								<div><a ng-href='{{myfirstCtrl.results.linktomore}}'target="_blank">Full Water Quality Report</a></div>-->
-	<!--							</div>-->
-	<!--							<div class="modal-footer">-->
-	<!--								<a href="" class="btn btn-primary" data-dismiss="modal">Close</a>-->
-	<!--							</div>-->
-	<!--						</div>-->
-	<!--					</div>-->
-	<!--				</div>-->
+ <div class="container" ng-hide="logCtrl.showNewUser">
+        <div class="card card-container">
+             <!--<img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="https://c2.staticflickr.com/4/3755/9123852150_a428360054.jpg" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin"  ng-submit="logCtrl.login()">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="logCtrl.username"required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="logCtrl.password" required>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+    
+    <div class="wrap">
+    	<input class='btn btn-info;' style="text-align:center;" id='adduser' ng-click='logCtrl.addUser()' type='button' value='Create A New User' ng-hide="logCtrl.showNewUser"/>
+    </div>
+		
+		<div class="container" ng-show='logCtrl.showNewUser'>
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin"  ng-submit="logCtrl.signup()">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Username" ng-model="logCtrl.newuserData.username"required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="logCtrl.newuserData.password" required>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Repeat Password" >
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Create Account</button>
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
