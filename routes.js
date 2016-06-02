@@ -12,37 +12,40 @@ router.route('/users')
     .post(userCtrl.userController.signup)
 router.route('/users/:id')
     .get(userCtrl.userController.showUser)
+router.route('/favorites')
+    .put(userCtrl.userController.addFavorites)
+    
     //===============uncomment when done======================//
-router.use(function(req, res, next){
-// //-----------------check everywhere for users token-------------------------------------
-    var token = req.body.token || req.param('token') || req.headers['x-access-token']
-        // 2 - If we find a token, we will use mySpecialSecret to try and decode it
-        //      - if it can't be decoded, send the user an error that they don't have the right token
-    console.log("token from client", token);
-    if (token) {
-        jwt.verify(token, mySpecialSecret, function(err, decoded) {
-            if (err) {
-                return res.status(403).send({
-                        success: false,
-                        message: "can't authenticate token"
-                    })
-//  ----- if it CAN be decoded, save the decoded token to the request, and we'll keep processing the request------//
-            }
-            else {
-                req.decoded = decoded;
-                next()
-            }
-        })
-    }
-    else {
-//----------- If we can't find a token at all, we'll just send back an error message---------------------//
-        return res.status(403).send({
-            success: false,
-            message: "no token provided"
-        })
-    }
+// router.use(function(req, res, next){
+// // //-----------------check everywhere for users token-------------------------------------
+//     var token = req.body.token || req.param('token') || req.headers['x-access-token']
+//         // 2 - If we find a token, we will use mySpecialSecret to try and decode it
+//         //      - if it can't be decoded, send the user an error that they don't have the right token
+//     console.log("token from client", token);
+//     if (token) {
+//         jwt.verify(token, mySpecialSecret, function(err, decoded) {
+//             if (err) {
+//                 return res.status(403).send({
+//                         success: false,
+//                         message: "can't authenticate token"
+//                     })
+// //  ----- if it CAN be decoded, save the decoded token to the request, and we'll keep processing the request------//
+//             }
+//             else {
+//                 req.decoded = decoded;
+//                 next()
+//             }
+//         })
+//     }
+//     else {
+// //----------- If we can't find a token at all, we'll just send back an error message---------------------//
+//         return res.status(403).send({
+//             success: false,
+//             message: "no token provided"
+//         })
+//     }
 
-})
+// })
     
 //---------------Routes for get/post/delete to mongoose------------------//   
 router.route('/hikes')
@@ -53,10 +56,6 @@ router.route('/hikes/:id')
     .delete(trailsCtrl.trailsController.delete)
     .get(trailsCtrl.trailsController.showOne)
     
-router.route('/favorites')
-    .put()
- 
-   
     
 // ================================
 module.exports = router

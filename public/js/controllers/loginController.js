@@ -40,7 +40,7 @@
        console.log('New User Created')
       })
       // ========delete
-     $state.go('profile')
+     $state.go('firstview')
     }
     //----------------------------------Logout removes Token------------------------------//
    logCtrl.logout = function() {
@@ -48,34 +48,9 @@
      $state.go('login')
      console.log('Logged Out')
     }
-    // ==========================================
-   logCtrl.favorite = function(hike) {
-     $http('/favorites')
-    }
-    // ============================
    logCtrl.showNewUser = false
    logCtrl.addUser = function() {
     logCtrl.showNewUser = logCtrl.showNewUser ? false : true;
    }
-   logCtrl.weather = function() {
-    console.log('searching for weather');
-    // $http.get('https://api.wunderground.com/api/74b8b83dc1cc3827/conditions/q/CO/Boulder.json')
-    $http.jsonp('https://api.wunderground.com/api/74b8b83dc1cc3827/conditions/q/CO/Boulder.json')
-      // .success(function(data){
-       // console.log(data)
-     .then(function(response) {
-      console.log('weather is ', response.data.current_observation.weather)
-      // console.log('Temperature is :', response.data.current_observation.weather)
-      
-      })
-     // })
-   }
-     logCtrl.getweather = function(){
-      console.log('something')
-      $http.jsonp('https://api.accuweather.com/locations/v1/cities/geoposition/search.json?q=40,-73&apikey=pxdtYP4hiTerXPLITDDA4eJS87ImSAQB')
-      .then(function(response){
-       console.log(response)
-      })
-     }
   }
  }());

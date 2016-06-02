@@ -1,6 +1,7 @@
 //--------------------Requiring the models.js(schema)--------------------------//
 var Trail = require("../models/trailsmodels")
-
+// ======delete
+var $http = require('request')
 //-----------Exporting the module object functions for CRUD--------------------//
 module.exports = {
   //----------------------Shows all the Hikes in hikingdb------------------------//

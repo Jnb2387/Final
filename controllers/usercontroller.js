@@ -72,6 +72,24 @@ module.exports = {
                 if (err) res.json(err);
                 res.json(user)
             })
+        },
+// add favorite trail to user profile        
+        addFavorites: function(req, res){
+            var userId = req.body.userId;
+            var trailsId = req.body.trailsId
+            var trailsIdnew =req.body.trailsId
+            // console.log('req.body',trailsIdnew)
+            User.findOne(userId, function(err, user, trailsIdnew){
+                // console.log('user', user)
+                // console.log('trails', trailsId)
+                if(err) res.json(err);
+                user.favorites.push(trailsId)
+                user.save(function(err, response){
+                    // console.log('response', response)
+                    if (err) res.json(err)
+                    res.json(response)
+                })
+            })
         }
     }
 }

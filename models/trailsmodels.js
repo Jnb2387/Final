@@ -18,5 +18,5 @@ var trailSchema = mongoose.Schema({
     rating: Number
 })
 
-//----------Exporting the schema with mongoose.modal to hikes.js for CRUD-------------//
+//----------Exporting the schema with mongoose.modal to trailscontroller.js for CRUD-------------//
 module.exports = mongoose.model("Hike", trailSchema)

@@ -44,5 +44,10 @@
       })
       console.log('didnt work', res)
     }
+    // =======add favorite trail to profile===================================
+   hCtrl.favorite = function() {
+     console.log('something')
+    }
+    // ============================
   }
 }());

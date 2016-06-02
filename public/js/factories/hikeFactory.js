@@ -21,6 +21,10 @@
       trailFact.showOne = function(id){
           return $http.get('/api/hikes/'+id)
       }
+      // ============
+      // trailFact.favorite = function(){
+      //     return $http.put('/api/profile')
+      // }
       return trailFact
     }
 }());

@@ -31,9 +31,6 @@
     <br> Rating:
     <input type="text" name="rating" ng-model="hCtrl.newHike.rating">
     <!------------------------------End of Inputs---------------------------------->
-
-
-
     <!------------------------------Add and Edit buttons---------------------------------->
     <button type="button" ng-if="hCtrl.page == 'create'" ng-click="hCtrl.submitHike(hCtrl.newHike)">Submit Hike</button>
     <button type="button" ng-if="hCtrl.page == 'edit'" ng-click="hCtrl.updateHike(hCtrl.newHike)">Submit Edit</button>

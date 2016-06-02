@@ -1,10 +1,14 @@
-<!-------------------List displaying all hikes using repeat------------------------>
 <div class="container">
-    <button ng-click='hCtrl.createHike()' class="btn btn-success"> Add New Hike</button>
-    <br>
-    <input type="text" name="searchText" , ng-model='searchText' />
-    <br>
-    <div style="height:700px;overflow-y:scroll;border-radius:30px;">
+<!--add new hike button-->
+    <button ng - click='hCtrl.createHike()' class="btn btn-success" data-toggle="modal" data-target="#myModal"> Add New Hike</button>
+    <!--search box-->
+            <div class="search" style='float:right; margin-right:10px;'>
+                <input type="text" name="searchText" , ng-model='searchText' class="form-control input-sm" placeholder="Search" />
+                <button type="submit" class="btnS btn-primary btn-sm">Search</button>
+            </div>
+    
+<!-------------------List displaying all hikes using repeat------------------------>
+    <!--<div style="height:700px;overflow-y:scroll;border-radius:30px;">-->
         <ul class="list-group">
             <li ng-repeat="hike in hCtrl.trails | filter:searchText" class="list-group-item" style="font-family: 'Raleway', sans-serif; font-size:16px;">
                 <img style="height:200px; width:200px; float:right; padding:10px;" src="{{ hike.thumbnail }}" />
@@ -21,10 +25,10 @@
                 <span class="listHeading">Activity:</span> {{ hike.activity_type_name }}
                 <br>
                 <!-------------form to add hike to completed for dashboard-------------------------->
-                <button type="button" class="btn btn-danger btn-lg" name="completed" style='float:right;' ng-click='logCtrl.favorite(hike)'>
-                  <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Add to Favorites
+                <button type="button" class="btn btn-danger btn-lg" name="completed" style='float:right;'ng-click='hCtrl.favorite(Hike)' >
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Add to Favorites
                 </button>
-                
+               
                 <br>
                 <span class="listHeading">Description:</span> {{ hike.description }}
                 <br>
@@ -34,8 +38,59 @@
                 <a target="_blank" href="{{ hike.url }}">Link to More Trail Information</a>
                 <!----------------------button to edit each individual hike---------------------->
                 <button ng-click='hCtrl.editHike(hike._id)'>Edit</button>
+            </li>
+        </ul>
+    <!--</div>-->
+
+    <!-----------------------------------------Add hike Modal------------------------------------------------------------->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"></button>
+                        <h3 class="modal-title" style="text-align:center;">Add a New Hike</h3>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form>
+                            City:
+                            <input type="text" name="city" ng-model="hCtrl.newHike.city">
+                            <br> Name:
+                            <input type="text" name="name" ng-model="hCtrl.newHike.name">
+                            <br> Directions:
+                            <input type="text" name="directions" ng-model="hCtrl.newHike.directions">
+                            <br> Lat:
+                            <input type="number" name="lat" ng-model="hCtrl.newHike.lat">
+                            <br> Lon:
+                            <input type="number" name="long" ng-model="hCtrl.newHike.lon">
+                            <br> Activity Type:
+                            <input type="text" name="activity_type_name" ng-model="hCtrl.newHike.activity_type_name">
+                            <br> Link:
+                            <input type="text" name="url" ng-model="hCtrl.newHike.url">
+                            <br> Length:
+                            <input type="number" name="length" ng-model="hCtrl.newHike.length">
+                            <br> Description:
+                            <input type="string" name="description" ng-model="hCtrl.newHike.description">
+                            <br> thumbnail:
+                            <input type="text" name="thumbnail" ng-model="hCtrl.newHike.thumbnail">
+                            <br> Rating:
+                            <input type="text" name="rating" ng-model="hCtrl.newHike.rating">
+                            <!------------------------------End of Inputs---------------------------------->
+                            <br>
+                            <!------------------------submit hike button and close modal----------------->
+                            <button type="button" ng-click="hCtrl.submitHike(hCtrl.newHike)" class="btn btn-primary" data-dismiss="modal">Submit Hike</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" class="btn btn-primary" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div style="margin-top:-510px;">
+        <style>.embed-container {position: relative; padding-bottom: 90%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{padding: 0,5%,3%,5%; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><small><a href="//www.arcgis.com/apps/Embed/index.html?webmap=1320108889ec406f854c1380f9ed81c5&amp;extent=-109.4964,37.2967,-102.0861,40.4101&amp;home=true&amp;zoom=true&amp;scale=true&amp;search=true&amp;searchextent=true&amp;basemap_gallery=true&amp;disable_scroll=true&amp;theme=dark" style="color:#0000FF;text-align:left" target="_blank">View larger map</a></small><br><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mountain map" src="//www.arcgis.com/apps/Embed/index.html?webmap=1320108889ec406f854c1380f9ed81c5&amp;extent=-109.4964,37.2967,-102.0861,40.4101&amp;home=true&amp;zoom=true&amp;scale=true&amp;search=true&amp;searchextent=true&amp;basemap_gallery=true&amp;disable_scroll=true&amp;theme=dark"></iframe></div>
+    <!--<style>.embed-container {position: relative; padding-bottom: 90%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{padding: 0,5%,3%,5%; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><small><a href="//www.arcgis.com/apps/Embed/index.html?webmap=1320108889ec406f854c1380f9ed81c5&amp;extent=-106.7175,38.4802,-104.865,39.2586&amp;home=true&amp;zoom=true&amp;scale=true&amp;search=true&amp;searchextent=true&amp;basemap_gallery=true&amp;disable_scroll=true&amp;theme=dark" style="color:#0000FF;text-align:left" target="_blank">View larger map</a></small><br><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mountain map" src="//www.arcgis.com/apps/Embed/index.html?webmap=1320108889ec406f854c1380f9ed81c5&amp;extent=-106.7175,38.4802,-104.865,39.2586&amp;home=true&amp;zoom=true&amp;scale=true&amp;search=true&amp;searchextent=true&amp;basemap_gallery=true&amp;disable_scroll=true&amp;theme=dark"></iframe></div>-->
+        <!--<style>.embed-container {position: relative; padding-bottom: 90%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{padding: 0,5%,3%,5%; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mountain map" src="//www.arcgis.com/apps/Embed/index.html?webmap=1320108889ec406f854c1380f9ed81c5&amp;extent=-109.0652,37.1283,-101.7373,40.5292&amp;zoom=true&amp;scale=true&amp;search=true&amp;searchextent=true&amp;basemap_gallery=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>-->
     </div>
-    </li>
-    </ul>
-    {{hCtrl.working}}
 </div>
