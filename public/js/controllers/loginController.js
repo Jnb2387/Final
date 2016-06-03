@@ -8,12 +8,8 @@
    logCtrl.userData = {}
    logCtrl.newuserData = {}
    logCtrl.page = 'Login'
-    // $http.get('/api/hikes')
-    //  .then(function(response) {
-    //   //----------display trails on user dashboard??----------------------//
-    //   logCtrl.userTrails = response.data[0].city
-    // console.log(response.data)
-    // })
+   
+ // -------------------------------grab user information
    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     logCtrl.loggedIn = Auth.isLoggedIn();
    });
@@ -21,10 +17,12 @@
 
      Auth.getUser()
       .then(function(response) {
-       logCtrl.user = response.data
-       console.log(logCtrl.user)
+       logCtrl.user = response
+       console.log('User Info',logCtrl.user)
+       // console.log('userData',logCtrl.newuserData)
       });
     })
+    
     //------------create login method to send user info to server----------//
    logCtrl.login = function() {
     $http.post('/api/login', {

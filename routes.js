@@ -7,13 +7,34 @@ var router = require("express").Router(),
 // =========delete if not bringing signup or login from server.js=========== 
 router.route('/login')
     .post(userCtrl.userController.login)
+router.route('/hikes')
+    .get(trailsCtrl.trailsController.all)
+    .post(auth,trailsCtrl.trailsController.create)
+router.route('/hikes/:id')
+    .put(auth,trailsCtrl.trailsController.update)
+    .delete(auth,trailsCtrl.trailsController.delete)
+    .get(trailsCtrl.trailsController.showOne)
 router.route('/users')
     .get(userCtrl.userController.showUsers)
     .post(userCtrl.userController.signup)
+
+router.use(auth)
+    
+    
 router.route('/users/:id')
     .get(userCtrl.userController.showUser)
     //===============uncomment when done======================//
-router.use(function(req, res, next){
+    
+router.route('/favorites')
+    .put(userCtrl.userController.addFavorites)
+    .get(userCtrl.userController.showFavorites)
+router.route('/me')
+    .get(function(req, res){
+        res.json(req.decoded)
+    })
+//---------------Routes for get/post/delete to mongoose------------------//   
+// ================================
+function auth(req, res, next){
 // //-----------------check everywhere for users token-------------------------------------
     var token = req.body.token || req.param('token') || req.headers['x-access-token']
         // 2 - If we find a token, we will use mySpecialSecret to try and decode it
@@ -22,6 +43,7 @@ router.use(function(req, res, next){
     if (token) {
         jwt.verify(token, mySpecialSecret, function(err, decoded) {
             if (err) {
+                console.log(decoded)
                 return res.status(403).send({
                         success: false,
                         message: "can't authenticate token"
@@ -29,6 +51,7 @@ router.use(function(req, res, next){
 //  ----- if it CAN be decoded, save the decoded token to the request, and we'll keep processing the request------//
             }
             else {
+                console.log('decoded',decoded)
                 req.decoded = decoded;
                 next()
             }
@@ -41,24 +64,6 @@ router.use(function(req, res, next){
             message: "no token provided"
         })
     }
-
-})
+}
     
-router.route('/favorites')
-    .put(userCtrl.userController.addFavorites)
-router.route('/me')
-    .get(function(req, res){
-        res.json(req.decoded)
-    })
-//---------------Routes for get/post/delete to mongoose------------------//   
-router.route('/hikes')
-    .get(trailsCtrl.trailsController.all)
-    .post(trailsCtrl.trailsController.create)
-router.route('/hikes/:id')
-    .put(trailsCtrl.trailsController.update)
-    .delete(trailsCtrl.trailsController.delete)
-    .get(trailsCtrl.trailsController.showOne)
-    
-    
-// ================================
 module.exports = router

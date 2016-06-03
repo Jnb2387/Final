@@ -29,7 +29,8 @@ module.exports = {
                 else if (user) {
                     if (user.authenticate(req.body.password)) {
                         var token = jwt.sign({
-                                name: user.username
+                                name: user.username,
+                                _id:user._id
                             }, mySpecialSecret, {
                                 expiresIn: 2300
                                 //60
@@ -69,34 +70,29 @@ module.exports = {
             User.findOne({
                 _id: id
             }, function(err, user) {
+                console.log('show user')
                 if (err) res.json(err);
                 res.json(user)
             })
         },
-// add favorite trail to user profile        
+// ----------------------add favorite trail to user profile        
         addFavorites: function(req, res){
-            var userId = req.body.userId;
+            // var userId = req.body.userId;
             var trailsId = req.body.trailsId
+            console.log('trailsId',trailsId)
             // var trailsIdnew =req.body.trailsId
-            console.log('req.body',req.body)
-            User.findById(userId, function(err, user){
-                // console.log('user', user)
-                // console.log('trails', trailsIdnew)
-                if(err) res.json(err);
-                user.favorites.push(trailsId)
-                user.save(function(err, response){
-                    // console.log('response', response)
-                    if (err) res.json(err)
-                    res.json(response)
-                })
+            console.log('req.body',req.decoded)
+            User.findByIdAndUpdate(req.decoded._id, {$push:{'favorites':req.body.trailsId}},{new:true},function(err,user){
+                if(err) return res.json(err);
+                res.json(user)
             })
         },
-    //   showFavorites: function(req, res){
-    //         var userId= req.body.userId;
-    //         user.findById(userId, function(err, user){
-    //             if (err) res.json(err);
-    //             res.json(user.favorites);
-    //         });
-    //     }
+      showFavorites: function(req, res){
+            var userId= req.decoded._id;
+            User.findById(userId, function(err, user){
+                if (err) res.json(err);
+                res.json(user.favorites);
+            });
+        }
     }
 }

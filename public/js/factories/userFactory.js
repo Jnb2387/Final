@@ -24,6 +24,12 @@
             userData.delete = function(id){
                 return $http.delete('/api/users/' + id)
             }
+            userData.addFavorite = function(id){
+                return $http.put('/api/favorites',id)
+            }
+            userData.getFavorites = function(){
+                return $http.get('/api/favorites')
+            }
             return userData;
         }
 }())

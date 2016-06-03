@@ -2,7 +2,7 @@
   angular.module('homeController', [])
     .controller('homeCtrl', homeCtrl)
     //------------------------ homeCtrl CONTROLLER for trails---------------------------//
-  function homeCtrl(trailFact, $state, $stateParams, userFactory) {
+  function homeCtrl(trailFact, $state, $stateParams, userFactory, Auth) {
     var hCtrl = this
     hCtrl.working = "controller working"
     hCtrl.page = $state.current.name
@@ -24,7 +24,7 @@
         .then(function(res) {
           console.log("new hike : ", res)
         })
-        $state.go('firstview')
+      $state.go('firstview')
     }
     hCtrl.searchHike = function(id, hike) {
       trailFact.showOne(hike)
@@ -44,13 +44,28 @@
       })
       console.log('didnt work', res)
     }
-    hCtrl.getFavorites =function(){
-        usersFactory.get
-    }
     // =======add favorite trail to profile===================================
-  // hCtrl.favorite = function() {
-  //   console.log('something')
-  //   }
-    // ============================
+    hCtrl.favorite = function(hike) {
+        Auth.getUser()
+          .then(function(response) {
+            hCtrl.user = response.data
+            console.log(hCtrl.user)
+            // console.log(response)
+            console.log(hike)
+          
+            var favoriteTrailId = {trailsId: hike._id}
+            userFactory.addFavorite(favoriteTrailId)
+            .then(function(response){
+              console.log('Successfully add to favorites')
+            })
+          })
+      }
+      userFactory.getFavorites()
+      .then(function(response){
+          hCtrl.userFav = response.data
+          console.log('userFav',hCtrl.userFav)
+      })
+      // user.findById(req.params.id).populate('favorites').exec(function(err, user) {})
+      
   }
 }());
