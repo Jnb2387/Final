@@ -5,19 +5,19 @@ var jwt = require('jsonwebtoken'),
 
 module.exports = {
     userController: {
-        signup: function(req, res) {
-            var user = new User(req.body)
-            console.log('Before save-------------------')
-            user.save(function(err, user) {
-                if (err) {
-                    res.json(err)
-                }
-                else {
-                    console.log('After save-------------------')
-                    res.json(user)
-                }
-            })
-        },
+        // signup: function(req, res) {
+        //     var user = new User(req.body)
+        //     console.log('Before save-------------------')
+        //     user.save(function(err, user) {
+        //         if (err) {
+        //             res.json(err)
+        //         }
+        //         else {
+        //             console.log('After save-------------------')
+        //             res.json(user)
+        //         }
+        //     })
+        // },
 
         login: function(req, res) {
             User.findOne({
@@ -30,10 +30,10 @@ module.exports = {
                     if (user.authenticate(req.body.password)) {
                         var token = jwt.sign({
                                 name: user.username,
-                                _id:user._id
+                                _id: user._id
                             }, mySpecialSecret, {
                                 expiresIn: 2300
-                                //60
+                                    //60
                             })
                             //---------- Send back a success message with the JWT
                         res.json({
@@ -57,6 +57,33 @@ module.exports = {
                 }
             })
         },
+        
+         signup: function(req, res) {
+            var user = new User(req.body)
+            console.log('Before save-------------------')
+            user.save(function(err, user) {
+                if (err) {
+                    res.json(err)
+                }else{
+                var token = jwt.sign({
+                                name: user.username,
+                                _id: user._id
+                            }, mySpecialSecret, {
+                                expiresIn: 2300
+                                    //60
+                            })
+                            //---------- Send back a success message with the JWT
+                        res.json({
+                            success: true,
+                            message: 'Log in Successful',
+                            token: token
+                        })
+                // else {
+                //     console.log('After save-------------------')
+                //     res.json(user)
+                }
+            })
+        },
 
         showUsers: function(req, res) {
             User.find({}, function(err, users) {
@@ -75,24 +102,39 @@ module.exports = {
                 res.json(user)
             })
         },
-// ----------------------add favorite trail to user profile        
-        addFavorites: function(req, res){
+        // ----------------------add favorite trail to user profile        
+        addFavorites: function(req, res) {
             // var userId = req.body.userId;
             var trailsId = req.body.trailsId
-            console.log('trailsId',trailsId)
-            // var trailsIdnew =req.body.trailsId
-            console.log('req.body',req.decoded)
-            User.findByIdAndUpdate(req.decoded._id, {$push:{'favorites':req.body.trailsId}},{new:true},function(err,user){
-                if(err) return res.json(err);
+            console.log('trailsId', trailsId)
+                // var trailsIdnew =req.body.trailsId
+            console.log('req.body', req.decoded)
+            User.findByIdAndUpdate(req.decoded._id, {
+                $push: {
+                    'favorites': req.body.trailsId
+                }
+            }, {
+                new: true
+            }, function(err, user) {
+                if (err) return res.json(err);
                 res.json(user)
             })
         },
-      showFavorites: function(req, res){
-            var userId= req.decoded._id;
-            User.findById(userId, function(err, user){
-                if (err) res.json(err);
+        // findOne: function(req, res) {
+        //     User.findById(req.params.id).populate('favorites').exec(function(err, user) {
+        //         if (err) return res.json({
+        //             error: err
+        //         });
+        //         res.json(user);
+        //     })
+        // },
+        showFavorites: function(req, res) {
+            var userId = req.decoded._id;
+            User.findById(userId).populate('favorites').exec(function(err, user) {
+                // console.log(user)
+                if (err) return res.json(err);
                 res.json(user.favorites);
             });
-        }
+        },
     }
 }

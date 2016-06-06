@@ -1,101 +1,3 @@
-<!--//------------dont touch--------------------------------->
-
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--  <head>-->
-<!--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">-->
-<!--    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">-->
-<!--    <title>Create web map from id</title>-->
-
-<!--    <link rel="stylesheet" href="https://js.arcgis.com/3.16/dijit/themes/claro/claro.css">-->
-<!--    <link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/css/esri.css">-->
-    <!--<link rel="stylesheet" href="css/layout.css">-->
-    
-<!--    <script src="https://js.arcgis.com/3.16/"></script>-->
-<!--   
-<!--//       require([-->
-<!--//         "dojo/parser",-->
-<!--//         "dojo/ready",-->
-<!--//         "dijit/layout/BorderContainer",-->
-<!--//         "dijit/layout/ContentPane",-->
-<!--//         "dojo/dom",-->
-<!--//         "esri/map", -->
-<!--//         "esri/urlUtils",-->
-<!--//         "esri/arcgis/utils",-->
-<!--//         "esri/dijit/Legend",-->
-<!--//         "esri/dijit/Scalebar",-->
-<!--//         "dojo/domReady!"-->
-<!--//       ], function(-->
-<!--//         parser,-->
-<!--//         ready,-->
-<!--//         BorderContainer,-->
-<!--//         ContentPane,-->
-<!--//         dom,-->
-<!--//         Map,-->
-<!--//         urlUtils,-->
-<!--//         arcgisUtils,-->
-<!--//         Legend,-->
-<!--//         Scalebar-->
-<!--//       ) {-->
-<!--//         ready(function(){-->
-
-<!--//         parser.parse();-->
-
-<!--// //if accessing webmap from a portal outside of ArcGIS Online, uncomment and replace path with portal URL-->
-<!--//       arcgisUtils.arcgisUrl = "https://firstproject-jnb2387.c9users.io/";-->
-<!--//         // arcgisUtils.createMap("1320108889ec406f854c1380f9ed81c5","map").then(function(response){-->
-<!--//           //update the app -->
-<!--//           dom.byId("title").innerHTML = response.itemInfo.item.title;-->
-<!--//           dom.byId("subtitle").innerHTML = response.itemInfo.item.snippet;-->
-
-<!--//           var map = response.map;-->
-
-
-
-<!--//           //add the scalebar -->
-<!--//           var scalebar = new Scalebar({-->
-<!--//             map: map,-->
-<!--//             scalebarUnit: "english"-->
-<!--//           });-->
-
-<!--//           //add the legend. Note that we use the utility method getLegendLayers to get -->
-<!--//           //the layers to display in the legend from the createMap response.-->
-<!--//           var legendLayers = arcgisUtils.getLegendLayers(response); -->
-<!--//           var legendDijit = new Legend({-->
-<!--//             map: map,-->
-<!--//             layerInfos: legendLayers-->
-<!--//           },"legend");-->
-<!--//           legendDijit.startup();-->
-
-
-<!--//         });-->
-
-
-<!--//         });-->
-
-<!--//       });-->
-<!--    </script>-->
-<!--  </head>-->
-
-<!--  <body class="claro">-->
-<!--      <h1>hi</h1>-->
-<!--    <div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline'" style="width:100%; height:100%;">-->
-<!--      <div id="header" class="shadow roundedCorners" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'">-->
-<!--        <div id="title"></div>-->
-<!--        <div id="subtitle"></div>-->
-<!--      </div>-->
-<!--      <div id="map" class="roundedCorners shadow" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'"></div>-->
-<!--      <div id="rightPane" class="roundedCorners shadow" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'right'" >-->
-<!--        <div id="legend"></div>-->
-<!--      </div>-->
-<!--    </div>-->
-    
-<!--<style>.embed-container {position: relative; padding-bottom: 70%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; bottom: 0; left: 0; width: 100%; height: 30%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -115px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mountain map" src="//www.arcgis.com/apps/Embed/index.html?webmap=1320108889ec406f854c1380f9ed81c5&amp;extent=-110.5027,36.9907,-99.802,40.9604&amp;zoom=true&amp;scale=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>-->
-<!--<style>.embed-container {position: relative; padding-bottom: 70%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{padding: 0,5%,3%,5%; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mountain map" src="//www.arcgis.com/apps/Embed/index.html?webmap=1320108889ec406f854c1380f9ed81c5&amp;extent=-109.0652,37.1283,-101.7373,40.5292&amp;zoom=true&amp;scale=true&amp;search=true&amp;searchextent=true&amp;basemap_gallery=true&amp;disable_scroll=true&amp;theme=light"></iframe></div>  </body>-->
-<!--</html>-->
-
-<!------------------------------end of dont touch--------------------------------------------->
-
 <!DOCTYPE html>
 <html ng-app="hikeApp">
   <head>
@@ -109,6 +11,10 @@
 		<!--<link rel="stylesheet" db.hikeshref="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.css" type="text/css" />-->
 	  <link href='https://fonts.googleapis.com/css?family=Rye' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    
+    <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+    
     <link rel="stylesheet" href="/css/firstview.css" type="text/css" />
     <link rel="stylesheet" href="/css/home.css" type="text/css" />
     <link rel="stylesheet" href="/css/login.css" type="text/css" />
@@ -126,15 +32,18 @@
           <span class="icon-bar"></span>
           <div>
         </button>
-        <h1 style="color:white;font-family: 'Rye', cursive;;"><span style="font-size:40px; margin:0;">C</span>olorado Trails</h1>
+        <h1 style="color:white;font-family: 'Rye', cursive;;"><span style="font-size:40px; margin:0;">L</span>ife Outside</h1>
       </div>
-      <div id="navbar6" class="navbar-collapse collapse">
+      <div id="navbar6" class="navbar-collapse collapse" ng-controller='navController as nCtrl'>
         <ul class="nav navbar-nav navbar-right">
           <!--<li class="active"><a href="#/home">Home</a></li>-->
           <li><a href="#/firstview">Trails</a></li>
+          <!--<li><a href="#/user/{{nCtrl.loggedID}}" ng-hide="nCtrl.loggedIn">Profile</a></li>-->
           <li><a href="#/mountains">14ers</a></li>
-          <li><a href="#/login">Login</a></li>
-          <li><a href="#/profile">Dashboard</a></li>
+          <li><a ui-sref="login" ng-hide="nCtrl.loggedIn">Login/Signup</a></li>
+          <!--<li><a href="#/profile">Dashboard</a></li>-->
+          <li ng-controller='loginCtrl as logCtrl' ><a href="#/profile" ng-show="nCtrl.loggedIn">{{ logCtrl.userName }}'s Dashboard</a></li>
+          <li ng-controller='loginCtrl as logCtrl'><a href="#/login" ng-show=nCtrl.loggedIn ng-click='logCtrl.logout()'>Logout</a></li>
         </ul>
       </div>
     <!--  /.nav-collapse -->
@@ -150,7 +59,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
-    <!--<script type="text/javascript" src="/js/main.js"></script>-->
+    <script type="text/javascript" src="/js/controllers/weatherController.js"></script>
     <script type="text/javascript" src="/js/controllers/homeController.js"></script>
     <script type="text/javascript" src="/js/controllers/loginController.js"></script>
     <script type="text/javascript" src="/js/factories/hikeFactory.js"></script>

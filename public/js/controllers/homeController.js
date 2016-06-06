@@ -2,7 +2,7 @@
   angular.module('homeController', [])
     .controller('homeCtrl', homeCtrl)
     //------------------------ homeCtrl CONTROLLER for trails---------------------------//
-  function homeCtrl(trailFact, $state, $stateParams, userFactory, Auth) {
+  function homeCtrl(trailFact, $state, $stateParams, userFactory, Auth, $scope) {
     var hCtrl = this
     hCtrl.working = "controller working"
     hCtrl.page = $state.current.name
@@ -60,12 +60,31 @@
             })
           })
       }
+      // userFactory.getFavorites()
+      // .then(function(response){
+      //     hCtrl.userFav = response.data
+      //     console.log('userFav',hCtrl.userFav)
+      // })
+// use to get user favorite and then grab weather off of city      
       userFactory.getFavorites()
-      .then(function(response){
-          hCtrl.userFav = response.data
-          console.log('userFav',hCtrl.userFav)
+      .then(function(response) {
+        hCtrl.userFav = response.data
+        // console.log(hCtrl.userFav)
+        for (var i = 0; i < hCtrl.userFav.length; i++) {
+          (function(i) {
+            $.getJSON('https://api.wunderground.com/api/295fb5e72ee3f286/conditions/q/CO/'+hCtrl.userFav[i].city+'.json')
+              .then(function(response) {
+                hCtrl.userFav[i].weather = response.current_observation.weather
+                hCtrl.userFav[i].icon = response.current_observation.icon_url
+                hCtrl.userFav[i].temperature = response.current_observation.temp_f
+                console.log(response)
+                // console.log("da weather", hCtrl.userFav[i].weather)
+                // console.log(hCtrl.userFav[i].temperature)
+                $scope.$apply()
+              })
+          })(i)
+        }
       })
-      // user.findById(req.params.id).populate('favorites').exec(function(err, user) {})
-      
+
   }
 }());

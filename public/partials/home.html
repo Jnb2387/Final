@@ -1,5 +1,14 @@
 <div class="homeBackground">
 <div class="container">
+    
+    {{1+1}}
+		<form ng-submit='wCtrl.showWeather()'>
+			<input ng-model='wCtrl.location' placeholder='Enter Location' value='text'>
+			<button>Click</button>
+		</form>
+		<p>
+			{{wCtrl.weather}}{{wCtrl.work}}
+		</p>
     <p>just checking from the home</p>
     <input type="text" name="search" placeholder="City" ng-model="hCtrl.searchHikes"/>
     <button type="sumbit" ng-click="hCtrl.searchHike()">Search For Trails</button>

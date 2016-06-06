@@ -12,7 +12,7 @@ router.route('/hikes')
     .post(auth,trailsCtrl.trailsController.create)
 router.route('/hikes/:id')
     .put(auth,trailsCtrl.trailsController.update)
-    .delete(auth,trailsCtrl.trailsController.delete)
+    .delete(trailsCtrl.trailsController.delete)
     .get(trailsCtrl.trailsController.showOne)
 router.route('/users')
     .get(userCtrl.userController.showUsers)
@@ -20,11 +20,8 @@ router.route('/users')
 
 router.use(auth)
     
-    
 router.route('/users/:id')
     .get(userCtrl.userController.showUser)
-    //===============uncomment when done======================//
-    
 router.route('/favorites')
     .put(userCtrl.userController.addFavorites)
     .get(userCtrl.userController.showFavorites)
@@ -39,7 +36,7 @@ function auth(req, res, next){
     var token = req.body.token || req.param('token') || req.headers['x-access-token']
         // 2 - If we find a token, we will use mySpecialSecret to try and decode it
         //      - if it can't be decoded, send the user an error that they don't have the right token
-    console.log("token from client", token);
+    // console.log("token from client", token);
     if (token) {
         jwt.verify(token, mySpecialSecret, function(err, decoded) {
             if (err) {
@@ -51,7 +48,7 @@ function auth(req, res, next){
 //  ----- if it CAN be decoded, save the decoded token to the request, and we'll keep processing the request------//
             }
             else {
-                console.log('decoded',decoded)
+                // console.log('decoded',decoded)
                 req.decoded = decoded;
                 next()
             }
@@ -59,10 +56,10 @@ function auth(req, res, next){
     }
     else {
 //----------- If we can't find a token at all, we'll just send back an error message---------------------//
-        return res.status(403).send({
-            success: false,
-            message: "no token provided"
-        })
+        // return res.status(403).send({
+        //     success: false,
+        //     message: "no token provided"
+        // })
     }
 }
     

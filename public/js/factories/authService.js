@@ -10,6 +10,18 @@
     //     }
     //   })
     // })
+    // function mainControl($http,$state,$window,$rootScope){
+    // var mainCtrl = this;
+
+    // $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    //   if ($window.localStorage.getItem('token')) {
+    //     mainCtrl.loggedIn = true;
+    //     mainCtrl.loggedID = $window.localStorage.getItem('_id')
+    //   } else {
+    //     mainCtrl.loggedIn = false;
+    //   }
+    // })
+    
 
 // auth factory to login and get information
 // inject $http for communicating with the API

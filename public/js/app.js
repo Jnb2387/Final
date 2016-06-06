@@ -1,5 +1,5 @@
 (function() {
-angular.module('hikeApp', ['homeController','loginController', "hikeFactory", 'ui.router','authenticationService','userFactory'])
+angular.module('hikeApp', ['homeController','loginController', "hikeFactory", 'ui.router','authenticationService','userFactory','weatherapp'])
     .config(routerConfig)
 
   function routerConfig($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -23,34 +23,36 @@ angular.module('hikeApp', ['homeController','loginController', "hikeFactory", 'u
         url: '/edit/:id',
         templateUrl: 'partials/hikeform.html',
         controller: 'homeCtrl as hCtrl',
-        authenticate: true
+        // authenticate: true
       })
       .state('firstview', {
         url: '/firstview',
         templateUrl: './partials/firstview.html',
         controller: 'homeCtrl as hCtrl',
-        authenticate: false
+        // authenticate: false
       })
     $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'partials/login.html',
         controller: 'loginCtrl as logCtrl',
-        authenticate: false
+        // authenticate: false
       })
       .state('profile', {
         url: '/profile',
         templateUrl: 'partials/profile.html',
         controller: 'homeCtrl as hCtrl',
-        authenticate: false
+        // authenticate: false
       })
       .state('mountains', {
         url: '/mountains',
         templateUrl: 'partials/mountains.html',
         controller: 'loginCtrl as logCtrl',
-        authenticate: false
+        // authenticate: false
       })
       // ------------------send client to homepage------------------- //           
-    $urlRouterProvider.otherwise('/firstview')
+    $urlRouterProvider.otherwise('/profile')
+    
   }
+  
 }());

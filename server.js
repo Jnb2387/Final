@@ -7,6 +7,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     path = require("path"),
     jwt = require('jsonwebtoken'),
+    cors = require('cors'),
+    
 //--------------- express object to use app.----------------------------------//  
     app = express();
 
@@ -20,6 +22,15 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
 }))
+
+//for weather api
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "https://firstproject-jnb2387.c9users.io/");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+// app.use(cors())
+
 app.use(express.static(path.join(__dirname, './public')))
 //--------------------connecting to routing page------------------------------//
 app.use('/api', apiRoutes)
