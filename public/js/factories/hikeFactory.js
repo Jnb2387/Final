@@ -9,8 +9,8 @@
           console.log("from factory",hike)
           return $http.post('/api/hikes', hike)
       }
-      trailFact.update = function(hike, id){
-          return $http.put('/api/hikes/'+id, hike)
+      trailFact.update = function(id){
+          return $http.patch('/api/hikes/'+id)
       }
       trailFact.delete = function(id){
           return $http.delete('/api/hikes/'+id)

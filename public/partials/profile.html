@@ -1,19 +1,18 @@
 <!-------------------------profile card------------------------------------------><!--<p>{{ hCtrl.userFav }}</p>-->
 <div class='container'>
-    <h2 class="display-1" style='font-family: "Anton", sans-serif;font-size:45px; color:green;'>Favorite Trails</h2>
+    <h2 class="display-1" id='oldFont'>Favorite Trails</h2>
 
-    <div class="demo-card" ng-repeat="favorite in hCtrl.userFav" style='float:right;margin:15px'>
+    <div class="demo-card" ng-repeat="favorite in hCtrl.userFav" id='opacity' >
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" id='ralewayfont'>
                 <!--<h4 class="list-group-item-heading"><strong style="font-size:24px;text-align:center;">{{favorite.city}}</strong></h4>-->
             </div>
-            <div class="list-group" style="font-family: 'Cabin', sans-serif; font-size:17px;">
-                    <div style="float:right; border-left:1px solid #000;padding:10px">
+            <div class="list-group"  id='ralewayfont'>
+                    <div class='profileCard'>
                         <p class="list-group-item-text">Todays Forcast is <br> {{ favorite.weather }}</p>
                         <p class="list-group-item-text"><img src='{{favorite.icon}}'alt="weather gif"/></p>
                         <p class="list-group-item-text">{{favorite.temperature}}°F</p>
                     </div>
-                    <vr>
                     <h4 class="list-group-item-heading"><strong style="font-size:24px;text-align:center;">{{favorite.city}}</strong></h4>
                     <p class="list-group-item-text">{{favorite.name}}</p>
                     <p class="list-group-item-text">Length - {{favorite.length}}</p>

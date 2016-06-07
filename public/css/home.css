@@ -1,26 +1,81 @@
 body{
     background-image:url('/images/treeimage.jpeg');
     background-size: cover;
+    /*opacity:.7;*/
 }
-
+#opacity{
+     opacity:.9;
+}
+#full{
+    opacity:1;
+}
+.display-1{
+   font-family: Anton, sans-serif;
+   font-size:45px; 
+   color:white; 
+   text-shadow: 2px 2px 4px #2c3e50;
+}
+#oldFont{
+    font-family: 'Rye', cursive;
+}
+#ralewayfont{
+    font-family: 'Raleway', sans-serif;
+}
 .nav{
     font-size:20px;
+}
+#opacity1{
+    opacity:.8;
+}
+.firstviewscroll{
+    height:750px;
+    overflow-y:scroll;
+    border-radius:30px;
+}
+.btn{
+    margin-bottom:10px;
 }
 /*card in profile page*/
 h2 {
     text-align: center;
     margin: 30px 0;
 }
+.search{
+    float:right;
+    margin-right:10px;
+}
+.trailImg{
+    height:200px; 
+    width:200px; 
+    float:right; 
+    padding:10px;
+}
+.trailLinks{
+    float:right;
+}
+.modal-title{
+    text-align:center;
+    font-family: 'Rye', cursive;
+}
+.form-horizontal{
+    font-family: "Cabin", sans-serif;
+    font-size:20px
+}
+.profileCard{
+     float:right; 
+     border-left:1px solid #000;
+     padding:10px
+}
 .demo-card {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto 100px;
-  background-color: white;
-  border-radius:10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 100px;
+    background-color: #95a5a6;
+    border-radius:10px;
+    float:right;
+    margin:15px
 }
 title {
   text-align: center;
 }
-/*#treatmentWrapperimg{*/
-/*    background-color:black;*/
-/*}*/
+

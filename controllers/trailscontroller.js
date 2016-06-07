@@ -41,24 +41,23 @@ module.exports = {
     update: function(req, res) {
       Trail.findOneAndUpdate({
           _id: req.params.id
-        }, req.body, {
-          new: true
-        },
+        },req.body, 
+        {new: true},
         function(err, trail) {
-          if (err) console.log("err updating trail: ", err)
-          res.json(trail)
-          if (err) {
+          if (err){
+            console.log('err updating',err)
             res.json({
               message: "database error",
               error: err
             })
           }
           else {
+            console.log('Updated')
             res.json({
               message: "trail updated",
               id: req.params.id
             })
-            res.send(trail)
+            // res.send(trail)
           }
         })
     },

@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, './public')))
 app.use('/api', apiRoutes)
 
 //------------------------------Creating Server-------------------------------//
-var port = process.env.PORT;
+var port = process.env.PORT || 80;
 
 app.listen(port, function() {
     console.log('server is listening on ' + port);
