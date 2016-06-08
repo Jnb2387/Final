@@ -1,13 +1,13 @@
 <div class="container">
     <!--add new hike button-->
-    <button ng - click='hCtrl.createHike()' class="btn btn-success" data-toggle="modal" data-target="#myModal"> Add New Hike</button>
+  
 
     <!--search box-->
     <div class="search">
         <input type="text" name="searchText" , ng-model='searchText' class="form-control input-sm" placeholder="Search" />
         <button type="submit" class="btnS btn-primary btn-sm">Search</button>
     </div>
-
+  <button ng - click='hCtrl.createHike()' class="btn btn-success" data-toggle="modal" data-target="#myModal"> Add New Hike</button>
     <!-------------------List displaying all hikes using repeat------------------------>
     <div class='firstviewscroll'>
     <ul class="list-group" id='opacity'>

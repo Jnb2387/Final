@@ -1,7 +1,7 @@
 body{
-    background-image:url('/images/treeimage.jpeg');
+    background-image:url('/images/treeimage-min.jpeg');
     background-size: cover;
-    /*opacity:.7;*/
+
 }
 #opacity{
      opacity:.9;
@@ -30,7 +30,7 @@ body{
 .firstviewscroll{
     height:750px;
     overflow-y:scroll;
-    border-radius:30px;
+    border-radius:l0px;
 }
 .btn{
     margin-bottom:10px;

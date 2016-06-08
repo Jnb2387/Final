@@ -10,6 +10,7 @@
             if ($window.localStorage.getItem('token')) {
                 nCtrl.loggedIn = true;
                 nCtrl.loggedID = $window.localStorage.getItem('_id')
+         
             }
             else {
                 nCtrl.loggedIn = false;

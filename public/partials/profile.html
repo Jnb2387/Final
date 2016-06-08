@@ -1,21 +1,29 @@
-<!-------------------------profile card------------------------------------------><!--<p>{{ hCtrl.userFav }}</p>-->
+<!-------------------------profile card------------------------------------------>
+<!--<p>{{ hCtrl.userFav }}</p>-->
 <div class='container'>
     <h2 class="display-1" id='oldFont'>Favorite Trails</h2>
 
-    <div class="demo-card" ng-repeat="favorite in hCtrl.userFav" id='opacity' >
+    <div class="demo-card" ng-repeat="favorite in hCtrl.userFav" id='opacity'>
         <div class="card">
             <div class="card-header" id='ralewayfont'>
                 <!--<h4 class="list-group-item-heading"><strong style="font-size:24px;text-align:center;">{{favorite.city}}</strong></h4>-->
             </div>
-            <div class="list-group"  id='ralewayfont'>
-                    <div class='profileCard'>
-                        <p class="list-group-item-text">Todays Forcast is <br> {{ favorite.weather }}</p>
-                        <p class="list-group-item-text"><img src='{{favorite.icon}}'alt="weather gif"/></p>
-                        <p class="list-group-item-text">{{favorite.temperature}}°F</p>
-                    </div>
-                    <h4 class="list-group-item-heading"><strong style="font-size:24px;text-align:center;">{{favorite.city}}</strong></h4>
-                    <p class="list-group-item-text">{{favorite.name}}</p>
-                    <p class="list-group-item-text">Length - {{favorite.length}}</p>
+            <div class="list-group" id='ralewayfont'>
+                <div class='profileCard'>
+                    <p class="list-group-item-text">Todays Forcast is
+                        <br> {{ favorite.weather }}</p>
+                    <p class="list-group-item-text"><img src={{favorite.icon}} alt="weather gif" /></p>
+                    <p class="list-group-item-text">{{favorite.temperature}}°F</p>
+                </div>
+                <h4 class="list-group-item-heading"><strong style="font-size:24px;text-align:center;">{{favorite.city}}</strong></h4>
+                <p class="list-group-item-text">{{favorite.name}}</p>
+                <p class="list-group-item-text">Length - {{favorite.length}}</p>
+               <p>{{favorite.elevation}}</p>
+        <!--MAP-->
+                    <ng-map center="{{favorite.lat}},{{favorite.lon}}" zoom=10 map-type-id='terrain'>
+                        <marker position="{{favorite.lat}},{{favorite.lon}}"></marker>
+                    </ng-map>
+                
             </div>
             <div class="card-footer text-muted">
                 Life Outside Is Better

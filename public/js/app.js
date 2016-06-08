@@ -51,7 +51,7 @@ angular.module('hikeApp', ['homeController','loginController', "hikeFactory", 'u
         // authenticate: false
       })
       // ------------------send client to homepage------------------- //           
-    $urlRouterProvider.otherwise('/profile')
+    $urlRouterProvider.otherwise('/firstview')
     
   }
   
